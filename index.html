@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GG3D | Impresión 3D personalizada</title>
+  <meta name="description" content="Llaveros, juegos, articulados y piezas decorativas impresas en 3D. Personalizadas y listas para pedir por WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <div class="brand">
+        <img class="brand__logo-img" src="Imagenes/LogoFinal.svg" alt="GG3D">
+        <div class="brand__tagline">Ideas que se imprimen</div>
+      </div>
+      <nav class="nav" id="nav">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#como-pedir">Cómo pedir</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="header__actions">
+        <a class="btn btn--primary btn--sm" id="ctaTop" href="#" rel="noopener">💬 WhatsApp</a>
+        <button class="navToggle" id="navToggle" aria-expanded="false" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="hero__label">🖨️ Impresión 3D · Argentina</div>
+          <h1>Tu idea, <span class="hero__accent">impresa</span> y lista para usar.</h1>
+          <p>Llaveros, juegos, piezas decorativas y articulados. Personalizados, fabricados a pedido y entregados en tu zona.</p>
+          <div class="hero__delivery">
+            <span class="delivery__icon">⚡</span>
+            <span>Entrega estimada: <strong>5 a 7 días hábiles</strong></span>
+          </div>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#catalogo">Ver catálogo</a>
+            <a class="btn btn--ghost" id="ctaHero" href="#" rel="noopener">Pedir por WhatsApp</a>
+          </div>
+          <div class="hero__chips">
+            <span class="chip">🔑 Llaveros</span>
+            <span class="chip">🎮 Articulados</span>
+            <span class="chip">🎲 Juegos</span>
+            <span class="chip">🏠 Decoración</span>
+          </div>
+        </div>
+        <div class="hero__mock">
+          <div class="mockCard mockCard--image">
+            <img id="heroImage" src="" alt="Producto destacado GG3D" class="hero__img">
+            <div class="hero__badge">⭐ Destacado</div>
+            <div class="hero__price" id="heroPrice"></div>
+            <div class="hero__name" id="heroName"></div>
+          </div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="container stats__inner">
+          <div class="stat"><strong>100%</strong><span>Personalizable</span></div>
+          <div class="stat__div"></div>
+          <div class="stat"><strong>PLA</strong><span>Material premium</span></div>
+          <div class="stat__div"></div>
+          <div class="stat"><strong>5–7 días</strong><span>Tiempo de entrega</span></div>
+          <div class="stat__div"></div>
+          <div class="stat"><strong>WhatsApp</strong><span>Pedido directo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Catálogo</h2>
+          <p>Elegí una categoría y pedilo directo por WhatsApp.</p>
+        </div>
+        <div class="filters" role="tablist" aria-label="Filtros de catálogo">
+          <button class="filter is-active" data-filter="all">Todo</button>
+          <button class="filter" data-filter="llaveros">Llaveros</button>
+          <button class="filter" data-filter="funcionales">Funcionales</button>
+          <button class="filter" data-filter="decorativas">Decorativas</button>
+          <button class="filter" data-filter="juegos">Juegos</button>
+          <button class="filter" data-filter="articulados">Articulados</button>
+          <button class="filter" data-filter="cuadros">Cuadros</button>
+          <button class="filter" data-filter="senaladores">Señaladores</button>
+        </div>
+        <div id="grid" class="grid" aria-live="polite"></div>
+        <div id="emptyState" class="empty-state" style="display:none;">
+          <div class="empty-state__icon">📦</div>
+          <p>No hay productos en esta categoría todavía.</p>
+          <a class="btn btn--primary" id="ctaEmpty" href="#">Consultame por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="trabajos" class="section section--dark">
+      <div class="container">
+        <div class="section__head section__head--light">
+          <h2>Trabajos realizados</h2>
+          <p>Algunos proyectos que pasaron por la impresora.</p>
+        </div>
+        <div class="works-grid">
+          <div class="work-card">
+            <img src="assets/Foto1.JPG" alt="Llaveros Hotrod Dobler" class="work-card__img" loading="lazy">
+            <div class="work-card__label">Llaveros corporativos · Hotrod Dobler</div>
+          </div>
+          <div class="work-card">
+            <img src="assets/Foto2.JPG" alt="Ghast articulado Minecraft" class="work-card__img" loading="lazy">
+            <div class="work-card__label">Ghast articulado · Minecraft</div>
+          </div>
+          <div class="work-card">
+            <img src="assets/Foto3.JPG" alt="Ta Te Ti portátil" class="work-card__img" loading="lazy">
+            <div class="work-card__label">Ta Te Ti portátil</div>
+          </div>
+          <div class="work-card">
+            <img src="assets/Foto4.JPG" alt="Portavasos pixel art" class="work-card__img" loading="lazy">
+            <div class="work-card__label">Portavasos pixel art · Minecraft</div>
+          </div>
+        </div>
+        <div class="works__cta">
+          <p>¿Tenés un proyecto en mente? Lo analizamos y te paso propuesta.</p>
+          <a class="btn btn--white" id="ctaWorksWpp" href="#">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-pedir" class="section section--soft">
+      <div class="container">
+        <div class="section__head">
+          <h2>Cómo pedir</h2>
+          <p>Simple, rápido y sin vueltas.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">1</div>
+            <div class="step__title">Elegí del catálogo</div>
+            <div class="step__text">Seleccioná un producto y tocá "Pedir por WhatsApp".</div>
+          </div>
+          <div class="step">
+            <div class="step__num">2</div>
+            <div class="step__title">Personalizá</div>
+            <div class="step__text">Color, nombre, texto o variante. Te guío según el producto.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">3</div>
+            <div class="step__title">Confirmación y entrega</div>
+            <div class="step__text">Te confirmo tiempo estimado y coordinamos la entrega.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Preguntas frecuentes</h2>
+          <p>Lo que más me preguntan antes de pedir.</p>
+        </div>
+        <details class="faq">
+          <summary>¿Se puede personalizar?</summary>
+          <p>Sí. Según el producto podés elegir nombre/texto, colores y variantes. En el catálogo cada producto aclara qué se puede personalizar.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Cuánto tarda la entrega?</summary>
+          <p>Entre 5 y 7 días hábiles en promedio. Te confirmo el tiempo exacto al hacer el pedido.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Hacés diseños a pedido?</summary>
+          <p>Sí. Si tenés algo especial en mente, lo evaluamos juntos y te paso una propuesta con tiempo y precio.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Con qué material trabajás?</summary>
+          <p>Principalmente PLA, resistente y apto para uso diario. Para proyectos específicos podemos ver otras opciones.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Cómo es la entrega?</summary>
+          <p>Punto de encuentro en zona o envío según donde estés. Lo coordinamos por WhatsApp una vez confirmado el pedido.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contacto" class="section section--soft">
+      <div class="container contact">
+        <div>
+          <h2>Contacto</h2>
+          <p>¿Querés cotizar o personalizar algo? Escribime por WhatsApp y lo armamos juntos.</p>
+          <div class="contact__actions">
+            <a class="btn btn--primary" id="ctaContact" href="#" rel="noopener">💬 WhatsApp</a>
+            <a class="btn btn--ghost" href="https://www.instagram.com/gg3d_impresiones/" target="_blank" rel="noopener">📷 Instagram</a>
+          </div>
+          <p class="muted">Tip: contame tu zona y si necesitás envío o punto de encuentro.</p>
+        </div>
+        <div class="contact__card">
+          <div class="contact__cardTitle">⏰ Horario</div>
+          <div class="contact__cardText">Lun a Sáb — coordinación por WhatsApp</div>
+          <div class="contact__cardTitle" style="margin-top:14px;">🚚 Entrega</div>
+          <div class="contact__cardText">Punto de encuentro / envíos según zona</div>
+          <div class="contact__cardTitle" style="margin-top:14px;">⚡ Tiempo</div>
+          <div class="contact__cardText">5 a 7 días hábiles promedio</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" data-close aria-label="Cerrar">✕</button>
+      <div class="modal__body">
+        <img id="modalImg" class="modal__img" alt="" />
+        <div class="modal__content">
+          <h3 id="modalTitle"></h3>
+          <p id="modalDesc" class="muted"></p>
+          <div class="meta">
+            <div class="meta__item">
+              <span>Precio</span>
+              <strong id="modalPrice"></strong>
+            </div>
+            <div class="meta__item">
+              <span>Categoría</span>
+              <strong id="modalCat"></strong>
+            </div>
+            <div class="meta__item meta__item--full">
+              <span>Personalización</span>
+              <strong id="modalPers"></strong>
+            </div>
+            <div class="meta__item meta__item--full">
+              <span>⚡ Entrega estimada</span>
+              <strong>5 a 7 días hábiles</strong>
+            </div>
+          </div>
+          <div class="modal__actions">
+            <a id="modalWpp" class="btn btn--primary" href="#" rel="noopener">💬 Pedir por WhatsApp</a>
+            <button class="btn btn--ghost" data-close>Seguir viendo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© <span id="year"></span> GG3D — Ideas que se imprimen</div>
+      <div class="footer__links">
+        <a href="https://www.instagram.com/gg3d_impresiones/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <a id="wppFloat" class="wppFloat" href="#" rel="noopener" aria-label="WhatsApp">
+    <span class="wppFloat__icon">💬</span>
+    <span class="wppFloat__text">WhatsApp</span>
+  </a>
+
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
