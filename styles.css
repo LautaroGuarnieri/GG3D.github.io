@@ -302,3 +302,92 @@ a { color:inherit; text-decoration:none; }
   .stat__div { display:none; }
   .stats__inner { justify-content:space-around; }
 }
+
+/* ── DARK MODE ── */
+[data-theme="dark"] {
+  --light: #1a1a1a;
+  --white: #242424;
+  --dark: #f0f0f0;
+  --shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+[data-theme="dark"] .header { background: rgba(26,26,26,.93); border-color: rgba(255,255,255,.08); }
+[data-theme="dark"] .section--soft { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.07); }
+[data-theme="dark"] .card { background: var(--white); border-color: rgba(255,255,255,.07); }
+[data-theme="dark"] .filter { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); color: var(--dark); }
+[data-theme="dark"] .filter.is-active { background: #f0f0f0; color: #1a1a1a; }
+[data-theme="dark"] .faq { background: var(--white); border-color: rgba(255,255,255,.07); }
+[data-theme="dark"] .step { background: var(--white); border-color: rgba(255,255,255,.07); }
+[data-theme="dark"] .contact__card { background: var(--white); border-color: rgba(255,255,255,.07); }
+[data-theme="dark"] .modal__panel { background: #242424; }
+[data-theme="dark"] .modal__close { background: rgba(40,40,40,.9); border-color: rgba(255,255,255,.15); color: #f0f0f0; }
+[data-theme="dark"] .meta__item { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.08); }
+[data-theme="dark"] .nav a:hover { background: rgba(255,255,255,.08); }
+[data-theme="dark"] .btn--ghost { color: var(--dark); border-color: rgba(255,255,255,.2); }
+[data-theme="dark"] .btn--ghost:hover { background: rgba(255,255,255,.08); }
+[data-theme="dark"] .order-form input,
+[data-theme="dark"] .order-form textarea { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); color: #f0f0f0; }
+[data-theme="dark"] .order-form input::placeholder,
+[data-theme="dark"] .order-form textarea::placeholder { color: rgba(255,255,255,.35); }
+[data-theme="dark"] .order-form label { color: rgba(255,255,255,.8); }
+[data-theme="dark"] body { background: var(--light); color: var(--dark); }
+
+/* ── THEME TOGGLE ── */
+.themeToggle {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(60,60,59,.18);
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.themeToggle:hover { background: rgba(60,60,59,.07); }
+[data-theme="dark"] .themeToggle { border-color: rgba(255,255,255,.15); }
+[data-theme="dark"] .themeToggle:hover { background: rgba(255,255,255,.08); }
+
+/* ── ORDER FORM ── */
+.form-wrap {
+  max-width: 640px;
+}
+.order-form { display: flex; flex-direction: column; gap: 18px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-weight: 700; font-size: 13px; }
+.form-optional { font-weight: 400; opacity: .6; }
+.order-form input,
+.order-form textarea {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(60,60,59,.18);
+  background: var(--white);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--dark);
+  transition: border-color .15s, box-shadow .15s;
+  outline: none;
+  width: 100%;
+}
+.order-form input:focus,
+.order-form textarea:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(187,22,33,.12);
+}
+.order-form textarea { resize: vertical; min-height: 100px; }
+.btn--full { width: 100%; }
+.form-footer { margin-top: 4px; }
+.form-success {
+  text-align: center; padding: 20px;
+  background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25);
+  border-radius: 14px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.form-success__icon { font-size: 28px; }
+.form-error {
+  text-align: center; padding: 14px;
+  background: rgba(187,22,33,.08); border: 1px solid rgba(187,22,33,.2);
+  border-radius: 14px; color: var(--red); font-size: 14px;
+}
+
+@media (max-width: 520px) {
+  .form-row { grid-template-columns: 1fr; }
+}

@@ -216,3 +216,80 @@ if(navToggle && nav){
 // Init
 render(window.PRODUCTS);
 setRandomHeroProduct();
+
+// ── DARK MODE ──────────────────────────────────────────────
+const themeToggle = document.getElementById("themeToggle");
+const html = document.documentElement;
+
+function applyTheme(theme) {
+  html.setAttribute("data-theme", theme);
+  localStorage.setItem("gg3d-theme", theme);
+  if (themeToggle) themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+}
+
+// Load saved theme
+const savedTheme = localStorage.getItem("gg3d-theme") || "light";
+applyTheme(savedTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const current = html.getAttribute("data-theme");
+    applyTheme(current === "dark" ? "light" : "dark");
+  });
+}
+
+// ── CARD IMAGE → OPEN MODAL ───────────────────────────────
+// Override: clicking card image also opens modal
+document.addEventListener("click", e => {
+  const img = e.target.closest(".card__img");
+  if (img) {
+    const card = img.closest("article.card");
+    if (card) {
+      const btn = card.querySelector("[data-open]");
+      if (btn) {
+        const p = window.PRODUCTS.find(x => x.id === btn.dataset.open);
+        if (p) openModal(p);
+      }
+    }
+  }
+});
+
+// ── ORDER FORM ────────────────────────────────────────────
+const orderForm   = document.getElementById("orderForm");
+const formSuccess = document.getElementById("formSuccess");
+const formError   = document.getElementById("formError");
+const submitBtn   = document.getElementById("submitBtn");
+
+if (orderForm) {
+  orderForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    const btnText    = submitBtn.querySelector(".btn-text");
+    const btnLoading = submitBtn.querySelector(".btn-loading");
+
+    btnText.style.display    = "none";
+    btnLoading.style.display = "inline";
+    submitBtn.disabled       = true;
+    formError.style.display  = "none";
+
+    try {
+      const res = await fetch(orderForm.action, {
+        method:  "POST",
+        body:    new FormData(orderForm),
+        headers: { Accept: "application/json" }
+      });
+
+      if (res.ok) {
+        orderForm.reset();
+        orderForm.style.display  = "none";
+        formSuccess.style.display = "flex";
+      } else {
+        throw new Error("Error");
+      }
+    } catch {
+      formError.style.display = "block";
+      btnText.style.display    = "inline";
+      btnLoading.style.display = "none";
+      submitBtn.disabled       = false;
+    }
+  });
+}

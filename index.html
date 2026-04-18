@@ -1,9 +1,12 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GG3D | Impresión 3D personalizada</title>
+  <link rel="icon" href="img/LogoFinal.png" type="image/png">
+  <link rel="shortcut icon" href="img/LogoFinal.png">
+  <link rel="apple-touch-icon" href="img/LogoFinal.png">
   <meta name="description" content="Llaveros, juegos, articulados y piezas decorativas impresas en 3D. Personalizadas y listas para pedir por WhatsApp." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,10 +25,12 @@
         <a href="#catalogo">Catálogo</a>
         <a href="#trabajos">Trabajos</a>
         <a href="#como-pedir">Cómo pedir</a>
-        <a href="#faq">Preguntas</a>
+        <a href="#faq">FAQ</a>
+        <a href="#pedido">Pedidos</a>
         <a href="#contacto">Contacto</a>
       </nav>
       <div class="header__actions">
+        <button class="themeToggle" id="themeToggle" aria-label="Cambiar tema">🌙</button>
         <a class="btn btn--primary btn--sm" id="ctaTop" href="#" rel="noopener">💬 WhatsApp</a>
         <button class="navToggle" id="navToggle" aria-expanded="false" aria-label="Menú">
           <span></span><span></span><span></span>
@@ -39,22 +44,16 @@
     <section class="hero">
       <div class="container hero__inner">
         <div class="hero__content">
-          <div class="hero__label">🖨️ Impresión 3D · Argentina</div>
+          <div class="hero__label">Impresión 3D · Argentina</div>
           <h1>Tu idea, <span class="hero__accent">impresa</span> y lista para usar.</h1>
           <p>Llaveros, juegos, piezas decorativas y articulados. Personalizados, fabricados a pedido y entregados en tu zona.</p>
           <div class="hero__delivery">
-            <span class="delivery__icon">⚡</span>
-            <span>Entrega estimada: <strong>5 a 7 días hábiles</strong></span>
+            <span class="delivery__icon"></span>
+            <span>Entrega estimada: <strong>3 a 7 días hábiles</strong></span>
           </div>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#catalogo">Ver catálogo</a>
             <a class="btn btn--ghost" id="ctaHero" href="#" rel="noopener">Pedir por WhatsApp</a>
-          </div>
-          <div class="hero__chips">
-            <span class="chip">🔑 Llaveros</span>
-            <span class="chip">🎮 Articulados</span>
-            <span class="chip">🎲 Juegos</span>
-            <span class="chip">🏠 Decoración</span>
           </div>
         </div>
         <div class="hero__mock">
@@ -190,7 +189,52 @@
       </div>
     </section>
 
-    <section id="contacto" class="section section--soft">
+    <!-- FORMULARIO DE PEDIDOS -->
+    <section id="pedido" class="section section--soft">
+      <div class="container">
+        <div class="section__head">
+          <h2>Hacé tu pedido</h2>
+          <p>Completá el formulario y te contactamos para confirmar los detalles.</p>
+        </div>
+        <div class="form-wrap">
+          <form class="order-form" id="orderForm" action="https://formspree.io/f/mgorknod" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre *</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required />
+              </div>
+              <div class="form-group">
+                <label for="celular">Celular *</label>
+                <input type="tel" id="celular" name="celular" placeholder="Ej: 11 1234-5678" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="producto">Producto / Propuesta *</label>
+              <input type="text" id="producto" name="producto" placeholder="¿Qué producto querés o qué tenés en mente?" required />
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje adicional <span class="form-optional">(opcional)</span></label>
+              <textarea id="mensaje" name="mensaje" rows="4" placeholder="Color, tamaño, fecha de entrega, zona, o cualquier detalle extra..."></textarea>
+            </div>
+            <div class="form-footer">
+              <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
+                <span class="btn-text">Enviar pedido</span>
+                <span class="btn-loading" style="display:none;">Enviando...</span>
+              </button>
+            </div>
+            <div class="form-success" id="formSuccess" style="display:none;">
+              <div class="form-success__icon">✅</div>
+              <p><strong>¡Pedido recibido!</strong> Te contactamos en las próximas horas para confirmar los detalles.</p>
+            </div>
+            <div class="form-error" id="formError" style="display:none;">
+              <p>Hubo un error al enviar. Intentá de nuevo o escribinos por WhatsApp.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
       <div class="container contact">
         <div>
           <h2>Contacto</h2>
@@ -207,13 +251,14 @@
           <div class="contact__cardTitle" style="margin-top:14px;">🚚 Entrega</div>
           <div class="contact__cardText">Punto de encuentro / envíos según zona</div>
           <div class="contact__cardTitle" style="margin-top:14px;">⚡ Tiempo</div>
-          <div class="contact__cardText">5 a 7 días hábiles promedio</div>
+          <div class="contact__cardText">3 a 7 días hábiles promedio</div>
         </div>
       </div>
     </section>
 
   </main>
 
+  <!-- Modal -->
   <div id="modal" class="modal" aria-hidden="true">
     <div class="modal__backdrop" data-close></div>
     <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -237,12 +282,12 @@
               <strong id="modalPers"></strong>
             </div>
             <div class="meta__item meta__item--full">
-              <span>⚡ Entrega estimada</span>
-              <strong>5 a 7 días hábiles</strong>
+              <span>Entrega estimada</span>
+              <strong>3 a 7 días hábiles</strong>
             </div>
           </div>
           <div class="modal__actions">
-            <a id="modalWpp" class="btn btn--primary" href="#" rel="noopener">💬 Pedir por WhatsApp</a>
+            <a id="modalWpp" class="btn btn--primary" href="#" rel="noopener">Pedir por WhatsApp</a>
             <button class="btn btn--ghost" data-close>Seguir viendo</button>
           </div>
         </div>
